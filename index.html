@@ -27,9 +27,88 @@
     .guest-name {
       font-family: 'Palatino Linotype', serif;
     }
+    .oval-photo {
+      animation: float 4s ease-in-out infinite;
+    }
+    .title, .names {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeSlideIn 1s ease forwards;
+      animation-delay: 0.5s;
+    }
+    .open-button {
+      animation: pulse 2s infinite;
+    }
+    .container {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+    .container.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .container:nth-of-type(odd).visible {
+      animation: slideInLeft 1s ease forwards;
+    }
+    .container:nth-of-type(even).visible {
+      animation: slideInRight 1s ease forwards;
+    }
+    .container:nth-of-type(3n).visible {
+      animation: zoomIn 1s ease forwards;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+    @keyframes fadeSlideIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    @keyframes slideInLeft {
+      0% { opacity: 0; transform: translateX(-100px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideInRight {
+      0% { opacity: 0; transform: translateX(100px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes zoomIn {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
   </style>
 </head>
 <body>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const allSections = document.querySelectorAll(".container");
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, { threshold: 0.1 });
+      allSections.forEach(section => observer.observe(section));
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const namaTamu = urlParams.get('to');
+      const guestNameElement = document.getElementById('guestName');
+      if (namaTamu && guestNameElement) {
+        guestNameElement.textContent = decodeURIComponent(namaTamu);
+      }
+    });
+  </script>
+
+  <!-- Button Music -->
   <button class="music-toggle" onclick="toggleMusic()">
     <img src="assets/img/logomusikawal.png" alt="Music" id="musicIcon">
   </button>
@@ -56,44 +135,6 @@
     <button class="open-button" onclick="document.getElementById('homeSlide').scrollIntoView({ behavior: 'smooth' })">💌 Buka Undangan</button>
   </section>
 
-  <section class="container" id="homeSlide">
-    <div class="title" style="color: #ffd700;">THE WEDDING OF</div>
-    <div class="names" style="color: #ffd700;">Andi & Yuli</div>
-  </section>
-
-  <section class="container" id="perkenalanSlide">
-    <div class="title">Tentang Kami</div>
-    <p style="max-width: 500px;">Kami merasa bersyukur atas pertemuan ini. Semoga langkah kami selalu diberkahi oleh-Nya.</p>
-    <img src="assets/img/perkenalan.jpg" alt="Perkenalan" style="width: 90vw; max-width: 500px; border-radius: 12px; margin-top: 20px;">
-  </section>
-
-  <section class="container" id="waktuSlide">
-    <div class="title" style="color: #ffd700;">Save the Date</div>
-    <div id="countdown" style="font-size: 20px; font-weight: bold; margin-top: 10px;"></div>
-    <div style="font-size: 18px; margin-top: 10px;">Minggu, 22 September 2025</div>
-    <div style="font-size: 18px;">Pukul 09.00 WIB</div>
-    <div style="font-size: 18px;">Bertempat di: Rumah Calon Mempelai Wanita</div>
-    <div style="font-size: 18px;">
-      <a href="https://www.google.com/maps/dir/?api=1&destination=Rumah+Calon+Mempelai+Wanita" target="_blank" style="text-decoration: none; color: #ffd700;">
-        <img src="assets/img/lokasi.png" alt="Lihat Lokasi" style="width: 20px; height: 20px; margin-right: 10px;"> Lihat Lokasi
-      </a>
-    </div>
-  </section>
-
-  <section class="container" id="galeriSlide">
-    <div class="title">Galeri</div>
-    <img src="assets/img/galeri1.jpg" alt="Galeri Satu" style="width: 90vw; max-width: 500px; border-radius: 12px; margin-bottom: 20px;">
-    <img src="assets/img/galeri2.jpg" alt="Galeri Dua" style="width: 90vw; max-width: 500px; border-radius: 12px;">
-  </section>
-
-  <section class="container" id="giftSlide">
-    <div class="title">Wedding Gift</div>
-    <p style="max-width: 500px;">Doa dan restu Anda sudah sangat berarti. Namun jika ingin memberikan hadiah, Anda dapat mengirimkannya ke:</p>
-    <p><img src="assets/img/logo-dana.png" alt="DANA" style="width: 25px; vertical-align: middle; margin-right: 10px;"> <strong>0852-2443-1545</strong></p>
-    <p><img src="assets/img/logo-bri.png" alt="BRI" style="width: 25px; vertical-align: middle; margin-right: 10px;"> <strong>1234-5678-9012-3456</strong></p>
-  </section>
-
-  <!-- External JS -->
   <script src="assets/js/script.js"></script>
 </body>
 </html>
