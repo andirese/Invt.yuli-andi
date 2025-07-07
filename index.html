@@ -57,6 +57,21 @@
     .container:nth-of-type(3n).visible {
       animation: zoomIn 1s ease forwards;
     }
+    .home-text {
+      position: absolute;
+      bottom: 20%;
+      right: 10%;
+      color: #fff;
+      text-align: right;
+      font-size: 1.3rem;
+      animation: fadeSlideIn 1.5s ease forwards;
+    }
+    .home-date {
+      font-family: 'Alike', serif;
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      animation: slideInLeft 1.5s ease forwards;
+    }
 
     @keyframes float {
       0% { transform: translateY(0); }
@@ -105,6 +120,19 @@
       if (namaTamu && guestNameElement) {
         guestNameElement.textContent = decodeURIComponent(namaTamu);
       }
+
+      const openBtn = document.querySelector('.open-button');
+      const bgMusic = document.getElementById('bgMusic');
+
+      openBtn.addEventListener('click', () => {
+        bgMusic.play();
+      });
+
+      document.addEventListener('scroll', () => {
+        if (bgMusic.paused) {
+          bgMusic.play();
+        }
+      });
     });
   </script>
 
@@ -133,6 +161,15 @@
     <div class="names">Andi & Yuli</div>
     <div class="guest-name" id="guestName">Bapak/Ibu/Saudara/i</div>
     <button class="open-button" onclick="document.getElementById('homeSlide').scrollIntoView({ behavior: 'smooth' })">💌 Buka Undangan</button>
+  </section>
+
+  <section class="container" id="homeSlide">
+    <div class="title" style="color: #ffd700;">THE WEDDING OF</div>
+    <div class="names" style="color: #ffd700;">Andi & Yuli</div>
+    <div class="home-text">
+      Kami mengundang Anda untuk menjadi bagian dari hari bahagia kami.
+      <div class="home-date">Minggu, 21 September 2025</div>
+    </div>
   </section>
 
   <script src="assets/js/script.js"></script>
