@@ -33,13 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  document.addEventListener('scroll', () => {
-    if (bgMusic.paused) {
-      bgMusic.play();
-      isPlaying = true;
-      musicIcon.src = 'assets/img/logomusikplay.png';
-    }
-  });
+  let musicPlayed = false;
+
+document.addEventListener('scroll', () => {
+  if (!musicPlayed) {
+    bgMusic.play();
+    musicPlayed = true;
+    isPlaying = true;
+    musicIcon.src = 'assets/img/logomusikplay.png';
+  }
 });
 
 // Countdown ke tanggal pernikahan
