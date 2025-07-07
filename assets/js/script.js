@@ -24,6 +24,7 @@ function toggleMusic() {
 
 // Autoplay Musik saat klik dan scroll pertama
 document.addEventListener('DOMContentLoaded', () => {
+  // Kode untuk autoplay musik
   const openBtn = document.querySelector('.open-button');
   if (openBtn) {
     openBtn.addEventListener('click', () => {
@@ -34,41 +35,35 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   let musicPlayed = false;
-
-document.addEventListener('scroll', () => {
-  if (!musicPlayed) {
-    bgMusic.play();
-    musicPlayed = true;
-    isPlaying = true;
-    musicIcon.src = 'assets/img/logomusikplay.png';
-  }
-});
-
-// Countdown ke tanggal pernikahan
-const weddingDate = new Date("2025-09-22T09:00:00").getTime();
-const countdownElement = document.getElementById("countdown");
-
-if (countdownElement) {
-  setInterval(() => {
-    const now = new Date().getTime();
-    const distance = weddingDate - now;
-
-    if (distance < 0) {
-      countdownElement.innerHTML = "Waktu pernikahan telah tiba!";
-      return;
+  document.addEventListener('scroll', () => {
+    if (!musicPlayed) {
+      bgMusic.play();
+      musicPlayed = true;
+      isPlaying = true;
+      musicIcon.src = 'assets/img/logomusikplay.png';
     }
+  });
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  // Kode untuk countdown
+  const weddingDate = new Date("2025-09-22T09:00:00").getTime();
+  const countdownElement = document.getElementById("countdown");
+  if (countdownElement) {
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+      if (distance < 0) {
+        countdownElement.innerHTML = "Waktu pernikahan telah tiba!";
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdownElement.innerHTML = `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`;
+    }, 1000);
+  }
 
-    countdownElement.innerHTML = `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`;
-  }, 1000);
-}
-
-// Animasi scroll aktif berulang
-document.addEventListener("DOMContentLoaded", () => {
+  // Kode untuk animasi scroll
   const allSections = document.querySelectorAll(".container");
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -79,6 +74,5 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }, { threshold: 0.1 });
-
   allSections.forEach(section => observer.observe(section));
 });
