@@ -1,1 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Alike', serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  min-height: 100vh;
+  padding: 1.5rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 1;
+}
+
+.oval-photo {
+  width: 200px;
+  height: 250px;
+  border-radius: 50% / 40%;
+  overflow: hidden;
+  border: 5px solid #fff;
+  margin: 1rem 0;
+}
+
+.oval-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.title {
+  font-family: 'Alike', serif;
+  font-size: 6vw;
+  margin-bottom: 0.5rem;
+}
+
+.names {
+  font-family: 'Amsterdam One', cursive;
+  font-size: 5.5vw;
+  margin-bottom: 1rem;
+}
+
+.guest-name {
+  font-family: 'Great Vibes', cursive;
+  font-size: 4.5vw;
+  margin-bottom: 1rem;
+}
+
+.open-button {
+  background-color: #9b6b3e;
+  color: #fff;
+  padding: 0.75rem 2rem;
+  border: none;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.open-button:hover {
+  background-color: #b47a47;
+}
+
+.music-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.music-toggle img {
+  width: 30px;
+  height: 30px;
+}
+
+.nav-fixed {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  z-index: 99;
+}
+
+.nav-fixed a img {
+  width: 32px;
+  height: 32px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
 
