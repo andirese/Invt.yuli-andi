@@ -1,1 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Undangan Pernikahan Andi & Yuli</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Amsterdam+One&family=Alike&family=Bricolage+Grotesque&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('assets/img/background.jpg') no-repeat center center/cover;
+      z-index: -3;
+    }
+  </style>
+</head>
+<body>
+  <button class="music-toggle" onclick="toggleMusic()">
+    <img src="assets/img/logomusikawal.png" alt="Music" id="musicIcon">
+  </button>
+  <audio id="bgMusic" loop>
+    <source src="assets/audio/musik.mp4" type="audio/mp4">
+  </audio>
+
+  <div class="nav-fixed">
+    <a href="#openingSlide"><img src="assets/img/nav-opening.png" alt="Opening"></a>
+    <a href="#homeSlide"><img src="assets/img/nav-home.png" alt="Home"></a>
+    <a href="#perkenalanSlide"><img src="assets/img/nav-perkenalan.png" alt="Perkenalan"></a>
+    <a href="#waktuSlide"><img src="assets/img/nav-waktu.png" alt="Waktu"></a>
+    <a href="#galeriSlide"><img src="assets/img/nav-galeri.png" alt="Galeri"></a>
+    <a href="#giftSlide"><img src="assets/img/nav-gift.png" alt="Gift"></a>
+  </div>
+
+  <section class="container" id="openingSlide">
+    <div class="oval-photo">
+      <img src="assets/img/andi-yuli.jpg" alt="Foto Andi & Yuli">
+    </div>
+    <div class="title">Wedding Invitation</div>
+    <div class="names">Andi & Yuli</div>
+    <div class="guest-name" id="guestName">Bapak/Ibu/Saudara/i</div>
+    <button class="open-button" onclick="document.getElementById('homeSlide').scrollIntoView({ behavior: 'smooth' })">💌 Buka Undangan</button>
+  </section>
+
+  <section class="container" id="homeSlide">
+    <div class="title" style="color: #ffd700;">THE WEDDING OF</div>
+    <div class="names" style="color: #ffd700;">Andi & Yuli</div>
+  </section>
+
+  <section class="container" id="perkenalanSlide">
+    <div class="title">Tentang Kami</div>
+    <p style="max-width: 500px;">Kami merasa bersyukur atas pertemuan ini. Semoga langkah kami selalu diberkahi oleh-Nya.</p>
+    <img src="assets/img/perkenalan.jpg" alt="Perkenalan" style="width: 90vw; max-width: 500px; border-radius: 12px; margin-top: 20px;">
+  </section>
+
+  <section class="container" id="waktuSlide">
+    <div class="title" style="color: #ffd700;">Save the Date</div>
+    <div id="countdown" style="font-size: 20px; font-weight: bold; margin-top: 10px;"></div>
+    <div style="font-size: 18px; margin-top: 10px;">Minggu, 22 September 2025</div>
+    <div style="font-size: 18px;">Pukul 09.00 WIB</div>
+    <div style="font-size: 18px;">Bertempat di: Rumah Calon Mempelai Wanita</div>
+    <div style="font-size: 18px;">
+      <a href="https://www.google.com/maps/dir/?api=1&destination=Rumah+Calon+Mempelai+Wanita" target="_blank" style="text-decoration: none; color: #ffd700;">
+        <img src="assets/img/lokasi.png" alt="Lihat Lokasi" style="width: 20px; height: 20px; margin-right: 10px;"> Lihat Lokasi
+      </a>
+    </div>
+  </section>
+
+  <section class="container" id="galeriSlide">
+    <div class="title">Galeri</div>
+    <img src="assets/img/galeri1.jpg" alt="Galeri Satu" style="width: 90vw; max-width: 500px; border-radius: 12px; margin-bottom: 20px;">
+    <img src="assets/img/galeri2.jpg" alt="Galeri Dua" style="width: 90vw; max-width: 500px; border-radius: 12px;">
+  </section>
+
+  <section class="container" id="giftSlide">
+    <div class="title">Wedding Gift</div>
+    <p style="max-width: 500px;">Doa dan restu Anda sudah sangat berarti. Namun jika ingin memberikan hadiah, Anda dapat mengirimkannya ke:</p>
+    <p><img src="assets/img/logo-dana.png" alt="DANA" style="width: 25px; vertical-align: middle; margin-right: 10px;"> <strong>0852-2443-1545</strong></p>
+    <p><img src="assets/img/logo-bri.png" alt="BRI" style="width: 25px; vertical-align: middle; margin-right: 10px;"> <strong>1234-5678-9012-3456</strong></p>
+  </section>
+
+  <!-- External JS -->
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
 
