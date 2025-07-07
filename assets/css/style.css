@@ -21,8 +21,8 @@ html, body {
   color: white;
   min-height: 100vh;
   padding: 1.5rem;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-  background: rgba(0, 0, 0, 0.15);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  background: none;
   position: relative;
   z-index: 1;
 }
