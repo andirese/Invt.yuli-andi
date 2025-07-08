@@ -123,16 +123,17 @@ html, body {
   to { transform: translateX(0); opacity: 1; }
 }
 
-/* Sembunyikan navigasi saat opening aktif */
-body.opening-active .nav-fixed {
-  display: none;
-}
-
 body.no-scroll {
   height: 100vh;
   overflow: hidden;
   position: fixed;
   width: 100%;
+  pointer-events: none; /* Tambahan opsional */
 }
+
+body.opening-active .nav-fixed {
+  display: none;
+}
+
 
 
