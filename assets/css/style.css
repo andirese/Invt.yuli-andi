@@ -1,132 +1,45 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  width: 100%;
-  height: 100%;
-  font-family: 'Alike', serif;
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-  min-height: 100vh;
-  padding: 1.5rem;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-  background: none;
+/* === BACKGROUND KHUSUS OPENING SLIDE === */
+#openingSlide {
   position: relative;
-  z-index: 1;
-}
-
-.oval-photo {
-  width: 200px;
-  height: 250px;
-  border-radius: 50% / 40%;
+  z-index: 2;
+  height: 100vh;
+  min-height: 100vh;
+  background: transparent;
   overflow: hidden;
-  border: 5px solid #fff;
-  margin: 1rem 0;
 }
 
-.oval-photo img {
+#openingSlide::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  background: url('../img/opening-bg.jpg') no-repeat center center/cover;
+  z-index: -1;
 }
 
-.title {
-  font-family: 'Alike', serif;
-  font-size: 6vw;
-  margin-bottom: 0.5rem;
-}
-
-.names {
-  font-family: 'Amsterdam One', cursive;
-  font-size: 5.5vw;
-  margin-bottom: 1rem;
-}
-
-.guest-name {
-  font-family: 'Great Vibes', cursive;
-  font-size: 4.5vw;
-  margin-bottom: 1rem;
-}
-
-.open-button {
-  background-color: #9b6b3e;
-  color: #fff;
-  padding: 0.75rem 2rem;
-  border: none;
-  font-size: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.open-button:hover {
-  background-color: #b47a47;
-}
-
-.music-toggle {
+/* === BACKGROUND UTAMA SEMUA SLIDE SETELAHNYA === */
+body::before {
+  content: "";
   position: fixed;
-  top: 20px;
-  right: 20px;
-  background: rgba(255, 255, 255, 0.7);
-  border: none;
-  border-radius: 50%;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.music-toggle img {
-  width: 20px;
-  height: 20px;
-}
-
-.nav-fixed {
-  position: fixed;
-  bottom: 0;
+  top: 0; left: 0;
   width: 100%;
-  background: rgba(0,0,0,0.3);
-  display: flex;
-  justify-content: space-around;
-  padding: 10px 0;
-  z-index: 99;
+  height: 100%;
+  background: url('../img/main-bg.jpg') no-repeat center center/cover;
+  z-index: -3;
 }
 
-.nav-fixed a img {
-  width: 32px;
-  height: 32px;
+/* Sembunyikan background utama saat masih di opening */
+body.opening-active::before {
+  display: none;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideInLeft {
-  from { transform: translateX(-100px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes slideInRight {
-  from { transform: translateX(100px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-
+/* Nonaktifkan scroll saat opening aktif */
 body.no-scroll {
   overflow: hidden;
 }
 
+/* Efek menghilang untuk opening slide */
 .fade-out {
   animation: fadeOut 1s forwards;
 }
@@ -135,5 +48,3 @@ body.no-scroll {
   from { opacity: 1; }
   to { opacity: 0; visibility: hidden; }
 }
-
-
