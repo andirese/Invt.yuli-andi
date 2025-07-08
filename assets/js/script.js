@@ -94,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
   allSections.forEach(section => observer.observe(section));
 });
 
-// Tambahan untuk animasi satu-satu
 const fadeItems = document.querySelectorAll(".fade-item");
 const fadeObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
