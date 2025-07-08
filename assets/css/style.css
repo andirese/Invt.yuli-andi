@@ -1,54 +1,78 @@
-/* === BACKGROUND KHUSUS UNTUK OPENING SLIDE === */
-#openingSlide {
-  position: relative;
-  z-index: 2;
-  height: 100vh;
-  min-height: 100vh;
-  background: transparent;
-  overflow: hidden;
+// Mengisi nama tamu dari URL parameter (?to=Nama Lengkap)
+const urlParams = new URLSearchParams(window.location.search);
+const namaTamu = urlParams.get('to');
+const guestNameElement = document.getElementById('guestName');
+if (namaTamu && guestNameElement) {
+  guestNameElement.textContent = decodeURIComponent(namaTamu);
 }
 
-#openingSlide::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('../img/opening-bg.jpg') no-repeat center center/cover;
-  background-attachment: fixed;
-  z-index: -1;
+// Toggle Musik
+const bgMusic = document.getElementById('bgMusic');
+const musicIcon = document.getElementById('musicIcon');
+let isPlaying = false;
+
+function toggleMusic() {
+  if (isPlaying) {
+    bgMusic.pause();
+    musicIcon.src = 'assets/img/logomusiknonplay.png';
+  } else {
+    bgMusic.play();
+    musicIcon.src = 'assets/img/logomusikplay.png';
+  }
+  isPlaying = !isPlaying;
 }
 
-/* === BACKGROUND UMUM UNTUK SLIDE SELAIN OPENING === */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('../img/main-bg.jpg') no-repeat center center/cover;
-  background-attachment: fixed;
-  z-index: -3;
-  transition: opacity 0.5s ease;
-}
+// Autoplay Musik saat klik dan scroll pertama
+document.addEventListener('DOMContentLoaded', () => {
+  // Kode untuk autoplay musik
+  const openBtn = document.querySelector('.open-button');
+  if (openBtn) {
+    openBtn.addEventListener('click', () => {
+      bgMusic.play();
+      isPlaying = true;
+      musicIcon.src = 'assets/img/logomusikplay.png';
+    });
+  }
 
-/* Sembunyikan background utama selama opening aktif */
-body.opening-active::before {
-  opacity: 0;
-  pointer-events: none;
-}
+  let musicPlayed = false;
+  document.addEventListener('scroll', () => {
+    if (!musicPlayed) {
+      bgMusic.play();
+      musicPlayed = true;
+      isPlaying = true;
+      musicIcon.src = 'assets/img/logomusikplay.png';
+    }
+  });
 
-/* Nonaktifkan scroll saat opening aktif */
-body.no-scroll {
-  overflow: hidden;
-}
+  // Kode untuk countdown
+  const weddingDate = new Date("2025-09-22T09:00:00").getTime();
+  const countdownElement = document.getElementById("countdown");
+  if (countdownElement) {
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+      if (distance < 0) {
+        countdownElement.innerHTML = "Waktu pernikahan telah tiba!";
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdownElement.innerHTML = `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`;
+    }, 1000);
+  }
 
-/* Efek fade-out saat opening selesai */
-.fade-out {
-  animation: fadeOut 1s forwards;
-}
-
-@keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; visibility: hidden; }
-}
+  // Kode untuk animasi scroll
+  const allSections = document.querySelectorAll(".container");
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      } else {
+        entry.target.classList.remove("visible");
+      }
+    });
+  }, { threshold: 0.1 });
+  allSections.forEach(section => observer.observe(section));
+});
