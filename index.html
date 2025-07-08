@@ -13,14 +13,22 @@
   <link rel="stylesheet" href="assets/css/style.css">
 
   <style>
+    /* Background khusus hanya untuk opening slide */
+    #openingSlide {
+      background: url('assets/img/background-opening.jpg') no-repeat center center/cover;
+      z-index: 3;
+    }
+
+    /* Background default untuk halaman lainnya (gunakan gambar sesuai kebutuhanmu) */
     body::before {
       content: "";
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: url('assets/img/background-opening.jpg') no-repeat center center/cover;
+      background: url('assets/img/background-utama.jpg') no-repeat center center/cover;
       z-index: -3;
     }
+
     .names {
       font-family: 'Aphrodite', cursive;
     }
@@ -57,15 +65,7 @@
     .container:nth-of-type(3n).visible {
       animation: zoomIn 1s ease forwards;
     }
-    .home-text {
-      position: absolute;
-      bottom: 20%;
-      right: 10%;
-      color: #000;
-      text-align: right;
-      font-size: 1.3rem;
-      animation: fadeSlideIn 1.5s ease forwards;
-    }
+
     .home-date {
       font-family: 'Alike', serif;
       font-size: 1.1rem;
@@ -73,6 +73,7 @@
       animation: slideInLeft 1.5s ease forwards;
     }
 
+    /* Animasi tambahan */
     @keyframes float {
       0% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
@@ -99,44 +100,27 @@
       0% { opacity: 0; transform: scale(0.8); }
       100% { opacity: 1; transform: scale(1); }
     }
+
+    /* Tambahan untuk blokir scroll saat opening */
+    body.no-scroll {
+      overflow: hidden;
+    }
+
+    /* Animasi hilang pada opening */
+    .fade-out {
+      animation: fadeOut 1s forwards;
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; visibility: hidden; }
+    }
   </style>
 </head>
-<body>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const allSections = document.querySelectorAll(".container");
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      }, { threshold: 0.1 });
-      allSections.forEach(section => observer.observe(section));
 
-      const urlParams = new URLSearchParams(window.location.search);
-      const namaTamu = urlParams.get('to');
-      const guestNameElement = document.getElementById('guestName');
-      if (namaTamu && guestNameElement) {
-        guestNameElement.textContent = decodeURIComponent(namaTamu);
-      }
+<body class="no-scroll">
 
-      const openBtn = document.querySelector('.open-button');
-      const bgMusic = document.getElementById('bgMusic');
-
-      openBtn.addEventListener('click', () => {
-        bgMusic.play();
-      });
-
-      document.addEventListener('scroll', () => {
-        if (bgMusic.paused) {
-          bgMusic.play();
-        }
-      });
-    });
-  </script>
-
-  <!-- Button Music -->
+  <!-- Musik -->
   <button class="music-toggle" onclick="toggleMusic()">
     <img src="assets/img/logomusikawal.png" alt="Music" id="musicIcon">
   </button>
@@ -144,6 +128,7 @@
     <source src="assets/audio/musik.mp4" type="audio/mp4">
   </audio>
 
+  <!-- Navigasi bawah -->
   <div class="nav-fixed">
     <a href="#homeSlide"><img src="assets/img/nav-home.png" alt="Home"></a>
     <a href="#perkenalanSlide"><img src="assets/img/nav-perkenalan.png" alt="Perkenalan"></a>
@@ -152,6 +137,7 @@
     <a href="#giftSlide"><img src="assets/img/nav-gift.png" alt="Gift"></a>
   </div>
 
+  <!-- Opening Slide -->
   <section class="container" id="openingSlide">
     <div class="oval-photo">
       <img src="assets/img/andi-yuli.jpg" alt="Foto Andi & Yuli">
@@ -159,20 +145,22 @@
     <div class="title" style="color: #000;">Wedding Invitation</div>
     <div class="names" style="color: #000;">Andi & Yuli</div>
     <div class="guest-name" style="color: #FFF;" id="guestName">Bapak/Ibu/Saudara/i</div>
-    <button class="open-button" onclick="document.getElementById('homeSlide').scrollIntoView({ behavior: 'smooth' })">💌 Buka Undangan</button>
+    <button class="open-button">💌 Buka Undangan</button>
   </section>
 
+  <!-- Home Slide -->
   <section class="container" id="homeSlide">
-  <div class="title" style="color: #595958; text-align: center; margin-bottom: 100px; animation: slideInLeft 1s ease forwards;">SAVE THE DATE</div>
-  <div class="title" style="color: #000;">THE WEDDING OF</div>
-  <div class="names" style="color: #000;">Andi & Yuli</div>
-  <div style="text-align: center; margin-top: 20px; color: #000;">
-    <div style="font-size: 0.9rem;">Kami mengundang Anda untuk menjadi bagian dari hari bahagia kami.</div>
-    <div class="home-date" style="font-size: 0.8rem; margin-top: 0.5rem;">Minggu, 21 September 2025</div>
-  </div>
-</section>
+    <div class="title" style="color: #595958; text-align: center; margin-bottom: 100px; animation: slideInLeft 1s ease forwards;">SAVE THE DATE</div>
+    <div class="title" style="color: #000;">THE WEDDING OF</div>
+    <div class="names" style="color: #000;">Andi & Yuli</div>
+    <div style="text-align: center; margin-top: 20px; color: #000;">
+      <div style="font-size: 0.9rem;">Kami mengundang Anda untuk menjadi bagian dari hari bahagia kami.</div>
+      <div class="home-date">Minggu, 21 September 2025</div>
+    </div>
+  </section>
 
+  <!-- Script utama -->
   <script src="assets/js/script.js"></script>
+
 </body>
-  <body class="no-scroll">
 </html>
