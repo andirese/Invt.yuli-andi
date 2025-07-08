@@ -123,7 +123,6 @@ html, body {
   to { transform: translateX(0); opacity: 1; }
 }
 
-/* Matikan scroll dan klik saat opening aktif */
 body.no-scroll {
   overflow: hidden;
   height: 100vh;
@@ -131,12 +130,10 @@ body.no-scroll {
   position: fixed;
 }
 
-/* Sembunyikan navigasi saat opening */
 body.opening-active .nav-fixed {
   display: none;
 }
 
-/* Animasi menghilang pada opening */
 .fade-out {
   animation: fadeOut 1s forwards;
 }
@@ -194,7 +191,6 @@ body.opening-active .nav-fixed {
   height: 20px;
 }
 
-/* Animasi muncul satu-satu saat scroll */
 .fade-item {
   opacity: 0;
   transform: translateY(40px);
