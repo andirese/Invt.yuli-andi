@@ -1,78 +1,125 @@
-// Mengisi nama tamu dari URL parameter (?to=Nama Lengkap)
-const urlParams = new URLSearchParams(window.location.search);
-const namaTamu = urlParams.get('to');
-const guestNameElement = document.getElementById('guestName');
-if (namaTamu && guestNameElement) {
-  guestNameElement.textContent = decodeURIComponent(namaTamu);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-// Toggle Musik
-const bgMusic = document.getElementById('bgMusic');
-const musicIcon = document.getElementById('musicIcon');
-let isPlaying = false;
-
-function toggleMusic() {
-  if (isPlaying) {
-    bgMusic.pause();
-    musicIcon.src = 'assets/img/logomusiknonplay.png';
-  } else {
-    bgMusic.play();
-    musicIcon.src = 'assets/img/logomusikplay.png';
-  }
-  isPlaying = !isPlaying;
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Alike', serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
-// Autoplay Musik saat klik dan scroll pertama
-document.addEventListener('DOMContentLoaded', () => {
-  // Kode untuk autoplay musik
-  const openBtn = document.querySelector('.open-button');
-  if (openBtn) {
-    openBtn.addEventListener('click', () => {
-      bgMusic.play();
-      isPlaying = true;
-      musicIcon.src = 'assets/img/logomusikplay.png';
-    });
-  }
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  min-height: 100vh;
+  padding: 1.5rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  background: none;
+  position: relative;
+  z-index: 1;
+}
 
-  let musicPlayed = false;
-  document.addEventListener('scroll', () => {
-    if (!musicPlayed) {
-      bgMusic.play();
-      musicPlayed = true;
-      isPlaying = true;
-      musicIcon.src = 'assets/img/logomusikplay.png';
-    }
-  });
+.oval-photo {
+  width: 200px;
+  height: 250px;
+  border-radius: 50% / 40%;
+  overflow: hidden;
+  border: 5px solid #fff;
+  margin: 1rem 0;
+}
 
-  // Kode untuk countdown
-  const weddingDate = new Date("2025-09-22T09:00:00").getTime();
-  const countdownElement = document.getElementById("countdown");
-  if (countdownElement) {
-    setInterval(() => {
-      const now = new Date().getTime();
-      const distance = weddingDate - now;
-      if (distance < 0) {
-        countdownElement.innerHTML = "Waktu pernikahan telah tiba!";
-        return;
-      }
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      countdownElement.innerHTML = `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`;
-    }, 1000);
-  }
+.oval-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-  // Kode untuk animasi scroll
-  const allSections = document.querySelectorAll(".container");
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      } else {
-        entry.target.classList.remove("visible");
-      }
-    });
-  }, { threshold: 0.1 });
-  allSections.forEach(section => observer.observe(section));
-});
+.title {
+  font-family: 'Alike', serif;
+  font-size: 6vw;
+  margin-bottom: 0.5rem;
+}
+
+.names {
+  font-family: 'Amsterdam One', cursive;
+  font-size: 5.5vw;
+  margin-bottom: 1rem;
+}
+
+.guest-name {
+  font-family: 'Great Vibes', cursive;
+  font-size: 4.5vw;
+  margin-bottom: 1rem;
+}
+
+.open-button {
+  background-color: #9b6b3e;
+  color: #fff;
+  padding: 0.75rem 2rem;
+  border: none;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.open-button:hover {
+  background-color: #b47a47;
+}
+
+.music-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.music-toggle img {
+  width: 20px;
+  height: 20px;
+}
+
+.nav-fixed {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  z-index: 99;
+}
+
+.nav-fixed a img {
+  width: 32px;
+  height: 32px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
