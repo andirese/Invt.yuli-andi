@@ -123,17 +123,29 @@ html, body {
   to { transform: translateX(0); opacity: 1; }
 }
 
+/* Matikan scroll dan klik saat opening aktif */
 body.no-scroll {
-  height: 100vh;
   overflow: hidden;
+  height: 100vh;
+  width: 100vw;
   position: fixed;
-  width: 100%;
-  pointer-events: none; /* Tambahan opsional */
 }
 
+/* Sembunyikan navigasi saat opening */
 body.opening-active .nav-fixed {
   display: none;
 }
+
+/* Animasi menghilang pada opening */
+.fade-out {
+  animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; visibility: hidden; }
+}
+
 
 
 
