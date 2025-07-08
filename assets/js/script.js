@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
       openingSlide.classList.add('fade-out');
 
       setTimeout(() => {
-        openingSlide.classList.add('fade-out-hidden');
         homeSlide.scrollIntoView({ behavior: 'smooth' });
       }, 800);
     });
