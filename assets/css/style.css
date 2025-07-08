@@ -1,4 +1,4 @@
-/* === BACKGROUND KHUSUS OPENING SLIDE === */
+/* === BACKGROUND KHUSUS UNTUK OPENING SLIDE === */
 #openingSlide {
   position: relative;
   z-index: 2;
@@ -15,10 +15,11 @@
   width: 100%;
   height: 100%;
   background: url('../img/opening-bg.jpg') no-repeat center center/cover;
+  background-attachment: fixed;
   z-index: -1;
 }
 
-/* === BACKGROUND UTAMA SEMUA SLIDE SETELAHNYA === */
+/* === BACKGROUND UMUM UNTUK SLIDE SELAIN OPENING === */
 body::before {
   content: "";
   position: fixed;
@@ -26,12 +27,15 @@ body::before {
   width: 100%;
   height: 100%;
   background: url('../img/main-bg.jpg') no-repeat center center/cover;
+  background-attachment: fixed;
   z-index: -3;
+  transition: opacity 0.5s ease;
 }
 
-/* Sembunyikan background utama saat masih di opening */
+/* Sembunyikan background utama selama opening aktif */
 body.opening-active::before {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Nonaktifkan scroll saat opening aktif */
@@ -39,7 +43,7 @@ body.no-scroll {
   overflow: hidden;
 }
 
-/* Efek menghilang untuk opening slide */
+/* Efek fade-out saat opening selesai */
 .fade-out {
   animation: fadeOut 1s forwards;
 }
