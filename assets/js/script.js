@@ -6,7 +6,7 @@ if (namaTamu && guestNameElement) {
   guestNameElement.textContent = decodeURIComponent(namaTamu);
 }
 
-// Toggle Musik
+// Toggle musik manual
 const bgMusic = document.getElementById('bgMusic');
 const musicIcon = document.getElementById('musicIcon');
 let isPlaying = false;
@@ -22,50 +22,62 @@ function toggleMusic() {
   isPlaying = !isPlaying;
 }
 
-// Autoplay Musik saat klik dan scroll pertama
+// Semua event saat DOM sudah siap
 document.addEventListener('DOMContentLoaded', () => {
-  // Kode untuk autoplay musik
   const openBtn = document.querySelector('.open-button');
-  if (openBtn) {
-    openBtn.addEventListener('click', () => {
-  bgMusic.play();
-  document.body.classList.remove('no-scroll');
-  document.getElementById('openingSlide').classList.add('fade-out');
-  setTimeout(() => {
-    document.getElementById('homeSlide').scrollIntoView({ behavior: 'smooth' });
-  }, 800);
-});
+  const openingSlide = document.getElementById('openingSlide');
+  const homeSlide = document.getElementById('homeSlide');
 
+  if (openBtn && bgMusic && openingSlide && homeSlide) {
+    openBtn.addEventListener('click', () => {
+      bgMusic.play();
+      isPlaying = true;
+      musicIcon.src = 'assets/img/logomusikplay.png';
+
+      // Aktifkan scroll & hilangkan opening
+      document.body.classList.remove('no-scroll');
+      openingSlide.classList.add('fade-out');
+
+      setTimeout(() => {
+        homeSlide.scrollIntoView({ behavior: 'smooth' });
+      }, 800); // sesuai animasi fade-out
+    });
+  }
+
+  // Autoplay musik saat scroll pertama
   let musicPlayed = false;
   document.addEventListener('scroll', () => {
-    if (!musicPlayed) {
+    if (!musicPlayed && bgMusic) {
       bgMusic.play();
       musicPlayed = true;
       isPlaying = true;
-      musicIcon.src = 'assets/img/logomusikplay.png';
+      if (musicIcon) musicIcon.src = 'assets/img/logomusikplay.png';
     }
   });
 
-  // Kode untuk countdown
-  const weddingDate = new Date("2025-09-22T09:00:00").getTime();
+  // Countdown waktu pernikahan
   const countdownElement = document.getElementById("countdown");
+  const weddingDate = new Date("2025-09-22T09:00:00").getTime();
   if (countdownElement) {
     setInterval(() => {
       const now = new Date().getTime();
       const distance = weddingDate - now;
+
       if (distance < 0) {
         countdownElement.innerHTML = "Waktu pernikahan telah tiba!";
         return;
       }
+
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
       countdownElement.innerHTML = `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`;
     }, 1000);
   }
 
-  // Kode untuk animasi scroll
+  // Animasi saat scroll ke tiap slide
   const allSections = document.querySelectorAll(".container");
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -76,5 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, { threshold: 0.1 });
+
   allSections.forEach(section => observer.observe(section));
 });
