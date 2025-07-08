@@ -128,3 +128,11 @@ body.opening-active .nav-fixed {
   display: none;
 }
 
+body.no-scroll {
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+
