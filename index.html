@@ -180,19 +180,6 @@
       musicIcon.src = 'assets/img/logomusiknonplay.png';
     }
   }
-    <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('.nav-fixed a');
-
-    navLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        // Cegah klik navigasi saat masih di halaman opening
-        if (document.body.classList.contains('opening-active')) {
-          e.preventDefault();
-        }
-      });
-    });
-  });
 </script>
   <!-- Button Music -->
   <button class="music-toggle" onclick="toggleMusic()">
@@ -328,4 +315,3 @@
   <script src="assets/js/script.js"></script>
 </body>
 </html>
-
