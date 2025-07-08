@@ -61,24 +61,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Countdown waktu pernikahan
   const countdownElement = document.getElementById("countdown");
-  const weddingDate = new Date("2025-09-22T09:00:00").getTime();
-  if (countdownElement) {
-    setInterval(() => {
-      const now = new Date().getTime();
-      const distance = weddingDate - now;
+const weddingDate = new Date("2025-09-22T09:00:00").getTime();
+if (countdownElement) {
+  setInterval(() => {
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
 
-      if (distance < 0) {
-        countdownElement.innerHTML = "Waktu pernikahan telah tiba!";
-        return;
-      }
+    if (distance < 0) {
+      countdownElement.innerHTML = "Waktu pernikahan telah tiba!";
+      return;
+    }
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      countdownElement.innerHTML = `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`;
-    }, 1000);
-  }
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdownElement.innerHTML = `
+      <div><span>${days}</span>Hari</div>
+      <div><span>${hours}</span>Jam</div>
+      <div><span>${minutes}</span>Menit</div>
+      <div><span>${seconds}</span>Detik</div>
+    `;
+  }, 1000);
+}
 
   // Animasi scroll untuk setiap slide (section)
   const allSections = document.querySelectorAll(".container");
