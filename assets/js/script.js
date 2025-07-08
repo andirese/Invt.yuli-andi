@@ -28,11 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const openBtn = document.querySelector('.open-button');
   if (openBtn) {
     openBtn.addEventListener('click', () => {
-      bgMusic.play();
-      isPlaying = true;
-      musicIcon.src = 'assets/img/logomusikplay.png';
-    });
-  }
+  bgMusic.play();
+  document.body.classList.remove('no-scroll'); // Aktifkan scroll
+  document.getElementById('homeSlide').scrollIntoView({ behavior: 'smooth' });
+});
 
   let musicPlayed = false;
   document.addEventListener('scroll', () => {
