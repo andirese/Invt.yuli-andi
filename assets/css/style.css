@@ -132,22 +132,18 @@ body.no-scroll {
 }
 
 /* Sembunyikan navigasi saat opening */
-.fade-out-hidden {
-  body.opening-active .nav-fixed {
-  display: none !important;
-  opacity: 0;
-  pointer-events: none;
+body.opening-active .nav-fixed {
+  display: none;
 }
 
 /* Animasi menghilang pada opening */
 .fade-out {
   animation: fadeOut 1s forwards;
-  pointer-events: none;
 }
 
 @keyframes fadeOut {
-  0% { opacity: 1; }
-  100% { opacity: 0; }
+  from { opacity: 1; }
+  to { opacity: 0; visibility: hidden; }
 }
 
 .profile-section {
