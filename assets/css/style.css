@@ -133,7 +133,10 @@ body.no-scroll {
 
 /* Sembunyikan navigasi saat opening */
 .fade-out-hidden {
+  body.opening-active .nav-fixed {
   display: none !important;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Animasi menghilang pada opening */
