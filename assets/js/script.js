@@ -6,7 +6,7 @@ if (namaTamu && guestNameElement) {
   guestNameElement.textContent = decodeURIComponent(namaTamu);
 }
 
-// Toggle musik manual
+// Musik dan tombol
 const bgMusic = document.getElementById('bgMusic');
 const musicIcon = document.getElementById('musicIcon');
 let isPlaying = false;
@@ -22,7 +22,6 @@ function toggleMusic() {
   isPlaying = !isPlaying;
 }
 
-// Semua event saat DOM sudah siap
 document.addEventListener('DOMContentLoaded', () => {
   const openBtn = document.querySelector('.open-button');
   const openingSlide = document.getElementById('openingSlide');
@@ -30,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (openBtn && bgMusic && openingSlide && homeSlide) {
     openBtn.addEventListener('click', () => {
+      // Mainkan musik dan ubah ikon
       bgMusic.play();
       isPlaying = true;
       musicIcon.src = 'assets/img/logomusikplay.png';
@@ -38,24 +38,25 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.remove('no-scroll');
       openingSlide.classList.add('fade-out');
 
+      // Scroll ke halaman selanjutnya setelah animasi selesai
       setTimeout(() => {
         homeSlide.scrollIntoView({ behavior: 'smooth' });
-      }, 800); // sesuai animasi fade-out
+      }, 1000); // waktu animasi fade-out
     });
   }
 
-  // Autoplay musik saat scroll pertama
+  // Auto-play musik saat scroll pertama (fallback untuk autoplay yang gagal)
   let musicPlayed = false;
   document.addEventListener('scroll', () => {
     if (!musicPlayed && bgMusic) {
       bgMusic.play();
       musicPlayed = true;
       isPlaying = true;
-      if (musicIcon) musicIcon.src = 'assets/img/logomusikplay.png';
+      musicIcon.src = 'assets/img/logomusikplay.png';
     }
   });
 
-  // Countdown waktu pernikahan
+  // Countdown waktu pernikahan (jika ada elemen countdown)
   const countdownElement = document.getElementById("countdown");
   const weddingDate = new Date("2025-09-22T09:00:00").getTime();
   if (countdownElement) {
@@ -77,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
   }
 
-  // Animasi saat scroll ke tiap slide
+  // Animasi scroll (fade/slide)
   const allSections = document.querySelectorAll(".container");
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
