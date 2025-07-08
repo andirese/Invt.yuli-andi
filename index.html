@@ -103,39 +103,84 @@
 </head>
 <body class="no-scroll opening-active">
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const allSections = document.querySelectorAll(".container");
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      }, { threshold: 0.1 });
-      allSections.forEach(section => observer.observe(section));
-
-      const urlParams = new URLSearchParams(window.location.search);
-      const namaTamu = urlParams.get('to');
-      const guestNameElement = document.getElementById('guestName');
-      if (namaTamu && guestNameElement) {
-        guestNameElement.textContent = decodeURIComponent(namaTamu);
-      }
-
-      const openBtn = document.querySelector('.open-button');
-      const bgMusic = document.getElementById('bgMusic');
-
-      openBtn.addEventListener('click', () => {
-        bgMusic.play();
-      });
-
-      document.addEventListener('scroll', () => {
-        if (bgMusic.paused) {
-          bgMusic.play();
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const allSections = document.querySelectorAll(".container");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
         }
       });
-    });
-  </script>
+    }, { threshold: 0.1 });
+    allSections.forEach(section => observer.observe(section));
 
+    // Ambil nama tamu dari URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const namaTamu = urlParams.get('to');
+    const guestNameElement = document.getElementById('guestName');
+    if (namaTamu && guestNameElement) {
+      guestNameElement.textContent = decodeURIComponent(namaTamu);
+    }
+
+    // Musik & scroll
+    const openBtn = document.querySelector('.open-button');
+    const bgMusic = document.getElementById('bgMusic');
+    const musicIcon = document.getElementById('musicIcon');
+    const openingSlide = document.getElementById('openingSlide');
+    const homeSlide = document.getElementById('homeSlide');
+
+    let isPlaying = false;
+
+    function startMusic() {
+      if (!isPlaying) {
+        bgMusic.play();
+        isPlaying = true;
+        if (musicIcon) musicIcon.src = 'assets/img/logomusikplay.png';
+      }
+    }
+
+    if (openBtn) {
+      openBtn.addEventListener('click', () => {
+        // Aktifkan scroll dan nav
+        document.body.classList.remove('no-scroll');
+        document.body.classList.remove('opening-active');
+
+        // Sembunyikan opening dengan animasi
+        openingSlide.classList.add('fade-out');
+
+        // Musik
+        startMusic();
+
+        // Scroll otomatis ke home
+        setTimeout(() => {
+          homeSlide.scrollIntoView({ behavior: 'smooth' });
+        }, 800);
+      });
+    }
+
+    // Antisipasi scroll pertama (jika pengguna tidak klik langsung)
+    let musicPlayed = false;
+    document.addEventListener('scroll', () => {
+      if (!musicPlayed) {
+        startMusic();
+        musicPlayed = true;
+      }
+    });
+  });
+
+  function toggleMusic() {
+    const bgMusic = document.getElementById('bgMusic');
+    const musicIcon = document.getElementById('musicIcon');
+    if (bgMusic.paused) {
+      bgMusic.play();
+      musicIcon.src = 'assets/img/logomusikplay.png';
+    } else {
+      bgMusic.pause();
+      musicIcon.src = 'assets/img/logomusiknonplay.png';
+    }
+  }
+</script>
   <!-- Button Music -->
   <button class="music-toggle" onclick="toggleMusic()">
     <img src="assets/img/logomusikawal.png" alt="Music" id="musicIcon">
