@@ -146,6 +146,66 @@ body.opening-active .nav-fixed {
   to { opacity: 0; visibility: hidden; }
 }
 
+.profile-section {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.photo-frame {
+  width: 200px;
+  height: 250px;
+  border: 5px solid #b88b4a;
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 0 auto 1rem;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.name {
+  font-family: 'Amsterdam One', cursive;
+  font-size: 1.8rem;
+  color: #000;
+  margin-bottom: 0.5rem;
+}
+
+.desc {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #333;
+}
+
+.ig {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+.ig img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Animasi muncul satu-satu saat scroll */
+.fade-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+.fade-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 
 
 
