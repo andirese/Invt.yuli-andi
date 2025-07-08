@@ -6,7 +6,7 @@ if (namaTamu && guestNameElement) {
   guestNameElement.textContent = decodeURIComponent(namaTamu);
 }
 
-// Musik dan tombol
+// Toggle Musik
 const bgMusic = document.getElementById('bgMusic');
 const musicIcon = document.getElementById('musicIcon');
 let isPlaying = false;
@@ -22,33 +22,21 @@ function toggleMusic() {
   isPlaying = !isPlaying;
 }
 
+// Autoplay Musik saat klik dan scroll pertama
 document.addEventListener('DOMContentLoaded', () => {
+  // Kode untuk autoplay musik
   const openBtn = document.querySelector('.open-button');
-  const openingSlide = document.getElementById('openingSlide');
-  const homeSlide = document.getElementById('homeSlide');
-
-  if (openBtn && bgMusic && openingSlide && homeSlide) {
+  if (openBtn) {
     openBtn.addEventListener('click', () => {
-      // Mainkan musik dan ubah ikon
       bgMusic.play();
       isPlaying = true;
       musicIcon.src = 'assets/img/logomusikplay.png';
-
-      // Aktifkan scroll & hilangkan opening
-      document.body.classList.remove('no-scroll');
-      openingSlide.classList.add('fade-out');
-
-      // Scroll ke halaman selanjutnya setelah animasi selesai
-      setTimeout(() => {
-        homeSlide.scrollIntoView({ behavior: 'smooth' });
-      }, 1000); // waktu animasi fade-out
     });
   }
 
-  // Auto-play musik saat scroll pertama (fallback untuk autoplay yang gagal)
   let musicPlayed = false;
   document.addEventListener('scroll', () => {
-    if (!musicPlayed && bgMusic) {
+    if (!musicPlayed) {
       bgMusic.play();
       musicPlayed = true;
       isPlaying = true;
@@ -56,29 +44,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Countdown waktu pernikahan (jika ada elemen countdown)
-  const countdownElement = document.getElementById("countdown");
+  // Kode untuk countdown
   const weddingDate = new Date("2025-09-22T09:00:00").getTime();
+  const countdownElement = document.getElementById("countdown");
   if (countdownElement) {
     setInterval(() => {
       const now = new Date().getTime();
       const distance = weddingDate - now;
-
       if (distance < 0) {
         countdownElement.innerHTML = "Waktu pernikahan telah tiba!";
         return;
       }
-
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
       countdownElement.innerHTML = `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`;
     }, 1000);
   }
 
-  // Animasi scroll (fade/slide)
+  // Kode untuk animasi scroll
   const allSections = document.querySelectorAll(".container");
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -89,6 +74,5 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, { threshold: 0.1 });
-
   allSections.forEach(section => observer.observe(section));
 });
