@@ -96,7 +96,7 @@ html, body {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: rgba(0,0,0,0.3);
+  background: #FFFFFF;
   display: flex;
   justify-content: space-around;
   padding: 10px 0;
