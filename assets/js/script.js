@@ -29,8 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (openBtn) {
     openBtn.addEventListener('click', () => {
   bgMusic.play();
-  document.body.classList.remove('no-scroll'); // Aktifkan scroll
-  document.getElementById('homeSlide').scrollIntoView({ behavior: 'smooth' });
+  document.body.classList.remove('no-scroll');
+  document.getElementById('openingSlide').classList.add('fade-out');
+  setTimeout(() => {
+    document.getElementById('homeSlide').scrollIntoView({ behavior: 'smooth' });
+  }, 800);
 });
 
   let musicPlayed = false;
