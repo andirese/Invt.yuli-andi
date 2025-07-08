@@ -123,3 +123,24 @@ html, body {
   to { transform: translateX(0); opacity: 1; }
 }
 
+/* Khusus opening slide */
+#openingSlide {
+  position: relative;
+  z-index: 2;
+  height: 100vh;
+  min-height: 100vh;
+  background: transparent;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Pisahkan visual dari slide-slide lainnya */
+#openingSlide + .container {
+  margin-top: 0;
+  border-top: 0;
+}
+
+
