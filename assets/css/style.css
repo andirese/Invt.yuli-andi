@@ -283,3 +283,34 @@ body.opening-active .nav-fixed {
   margin-right: 8px;
 }
 
+/* Untuk slide perkenalan */
+.profile-section .photo-frame {
+  width: 200px; /* Atur lebar bingkai */
+  height: 250px; /* Atur tinggi bingkai */
+  border-radius: 10px; /* Atur radius bingkai */
+  overflow: hidden; /* Pastikan gambar tidak keluar dari bingkai */
+  margin: 20px auto; /* Atur margin bingkai */
+}
+
+.profile-section .photo-frame img {
+  width: 100%; /* Atur lebar gambar */
+  height: 100%; /* Atur tinggi gambar */
+  object-fit: cover; /* Pastikan gambar sesuai dengan bingkai */
+}
+
+/* Untuk slide galeri */
+.gallery .photo-frame {
+  width: 250px; /* Atur lebar bingkai */
+  height: 200px; /* Atur tinggi bingkai */
+  border-radius: 10px; /* Atur radius bingkai */
+  overflow: hidden; /* Pastikan gambar tidak keluar dari bingkai */
+  margin: 20px; /* Atur margin bingkai */
+}
+
+.gallery .photo-frame img {
+  width: 100%; /* Atur lebar gambar */
+  height: 100%; /* Atur tinggi gambar */
+  object-fit: cover; /* Pastikan gambar sesuai dengan bingkai */
+}
+
+
