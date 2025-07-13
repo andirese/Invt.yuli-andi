@@ -290,8 +290,8 @@ body.opening-active .nav-fixed {
     margin: 20px 0;
   }
   .photo-frame {
-    width: 18%;
-    margin: 10px;
+    width: 50%;
+    margin: 20px;
     border: 2px solid #ccc;
     border-radius: 10px;
     overflow: hidden;
