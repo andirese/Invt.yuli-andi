@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Countdown waktu pernikahan
   const countdownElement = document.getElementById("countdown");
-const weddingDate = new Date("2025-09-22T09:00:00").getTime();
+const weddingDate = new Date("2025-09-27T09:00:00").getTime();
 if (countdownElement) {
   setInterval(() => {
     const now = new Date().getTime();
