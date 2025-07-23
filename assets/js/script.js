@@ -112,3 +112,18 @@ const fadeObserver = new IntersectionObserver((entries) => {
 
 fadeItems.forEach(item => fadeObserver.observe(item));
 
+  // Animasi scroll
+  document.addEventListener("scroll", () => {
+    document.querySelectorAll(".reveal").forEach((el) => {
+      const top = el.getBoundingClientRect().top;
+      if (top < window.innerHeight - 100) {
+        el.classList.add("active");
+      }
+    });
+  });
+
+  // Toggle informasi rekening
+  function toggleGiftDetails() {
+    const gift = document.getElementById("gift-details");
+    gift.classList.toggle("hidden");
+  }
