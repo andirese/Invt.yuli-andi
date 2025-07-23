@@ -61,7 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Countdown waktu pernikahan
   const countdownElement = document.getElementById("countdown");
-const weddingDate = new Date("2025-09-27T09:00:00").getTime();
+// 27 September 2025 pukul 09.00 WIB → setara 02.00 UTC
+const weddingDate = new Date(Date.UTC(2025, 8, 27, 2, 0, 0)).getTime();
+
 if (countdownElement) {
   setInterval(() => {
     const now = new Date().getTime();
