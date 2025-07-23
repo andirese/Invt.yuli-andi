@@ -122,7 +122,6 @@ fadeItems.forEach(item => fadeObserver.observe(item));
     });
   });
 
-  // Toggle informasi rekening
  function toggleGiftDetails() {
     const giftSection = document.getElementById('gift-details');
     if (giftSection.classList.contains('hidden')) {
