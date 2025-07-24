@@ -123,21 +123,3 @@ fadeItems.forEach(item => fadeObserver.observe(item));
       }
     });
   });
-
- function toggleGiftDetails() {
-    const giftSection = document.getElementById('gift-details');
-    if (giftSection.classList.contains('hidden')) {
-      giftSection.classList.remove('hidden');
-    } else {
-      giftSection.classList.add('hidden');
-    }
-  }
-
-  if (bukaUndanganBtn) {
-    bukaUndanganBtn.addEventListener("click", () => {
-      // Tampilkan bunga-bunga pojok
-      document.querySelectorAll('.bunga-pojok').forEach(el => {
-        el.style.opacity = "1";
-      });
-    });
-  }
