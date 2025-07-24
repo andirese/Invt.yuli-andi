@@ -123,3 +123,4 @@ fadeItems.forEach(item => fadeObserver.observe(item));
       }
     });
   });
+
