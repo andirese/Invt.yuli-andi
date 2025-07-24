@@ -386,3 +386,27 @@ body.opening-active .nav-fixed {
 /* Google Font Import */
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
+.rekening-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.rekening-logo {
+  width: 30px;
+  height: auto;
+}
+
+.rekening-item button {
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  background-color: #b88b4a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+
