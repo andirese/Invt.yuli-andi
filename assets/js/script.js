@@ -133,8 +133,6 @@ fadeItems.forEach(item => fadeObserver.observe(item));
     }
   }
 
- const bukaUndanganBtn = document.getElementById("bukaUndangan");
-
   if (bukaUndanganBtn) {
     bukaUndanganBtn.addEventListener("click", () => {
       // Tampilkan bunga-bunga pojok
