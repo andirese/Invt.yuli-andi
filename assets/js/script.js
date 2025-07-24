@@ -132,3 +132,14 @@ fadeItems.forEach(item => fadeObserver.observe(item));
       giftSection.classList.add('hidden');
     }
   }
+
+ const bukaUndanganBtn = document.getElementById("bukaUndangan");
+
+  if (bukaUndanganBtn) {
+    bukaUndanganBtn.addEventListener("click", () => {
+      // Tampilkan bunga-bunga pojok
+      document.querySelectorAll('.bunga-pojok').forEach(el => {
+        el.style.opacity = "1";
+      });
+    });
+  }
