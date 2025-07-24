@@ -358,6 +358,37 @@
   </div>
 </section>
 
+  <section class="container" id="rsvpSlide">
+    <div class="title">Ucapkan Sesuatu</div>
+    <p class="desc">Do'a restu Anda merupakan karunia</p>
+    <p class="desc margin-bottom">yang sangat berarti bagi kami.</p>
+
+    <div class="status-container">
+      <div class="status-box">
+        <div class="status-count green" id="hadirCount">0</div>
+        <div class="status-label">Hadir</div>
+      </div>
+      <div class="status-box">
+        <div class="status-count red" id="tidakHadirCount">0</div>
+        <div class="status-label">Tidak Hadir</div>
+      </div>
+    </div>
+
+    <div class="form-container">
+      <input id="namaInput" type="text" placeholder="Nama Anda" class="input"/>
+      <textarea id="komentarInput" placeholder="Ucapan / Do'a" class="input"></textarea>
+      <div class="button-group">
+        <button onclick="submitUcapan('Hadir')" class="btn green-btn">Hadir</button>
+        <button onclick="submitUcapan('Tidak Hadir')" class="btn red-btn">Tidak Hadir</button>
+      </div>
+    </div>
+
+    <div id="ucapanList" class="ucapan-list"></div>
+  </section>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
 <script src="assets/js/script.js"></script>
 </body>
 </html>
