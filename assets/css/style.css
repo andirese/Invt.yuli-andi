@@ -363,3 +363,26 @@ body.opening-active .nav-fixed {
 .hidden {
   display: none;
 }
+
+.closing-section {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: #fffaf5;
+}
+
+.closing-text {
+  font-size: 1.1rem;
+  color: #444;
+  margin: 0.5rem 0;
+}
+
+.signature {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  color: #b4876d;
+  margin-top: 2rem;
+}
+
+/* Google Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
