@@ -132,4 +132,11 @@ function toggleGiftDetails() {
       giftSection.classList.add('hidden');
     }
   }
-
+function copyText(elementId) {
+    const text = document.getElementById(elementId).textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Nomor berhasil disalin!');
+    }).catch(err => {
+      alert('Gagal menyalin: ' + err);
+    });
+  }
