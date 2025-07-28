@@ -414,3 +414,9 @@ body.opening-active .nav-fixed {
   font-size: 0.8rem; /* Atur ukuran font */
 }
 
+.timeline-section h3 {
+  font-family: 'Great Vibes', cursive; /* Atur font-family */
+  font-size: 2rem; /* Atur ukuran font */
+}
+
+
