@@ -411,7 +411,7 @@ body.opening-active .nav-fixed {
 
 .timeline-section h3 {
   font-style: italic;
-  font-size: 0.8rem; /* Bisa disesuaikan: 0.9rem, 0.8rem */
+  font-size: 0.6rem; /* Bisa disesuaikan: 0.9rem, 0.8rem */
   text-align: center; /* Opsional: untuk meratakan tengah */
   color: #444; /* Bisa ubah sesuai tema */
   margin-bottom: 0.3rem;
