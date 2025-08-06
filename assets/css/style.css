@@ -286,7 +286,7 @@ body.opening-active .nav-fixed {
 /* Untuk slide perkenalan */
 .profile-section .photo-frame {
   width: 200px; /* Atur lebar bingkai */
-  height: 250px; /* Atur tinggi bingkai */
+  height: 270px; /* Atur tinggi bingkai */
   border-radius: 10px; /* Atur radius bingkai */
   overflow: hidden; /* Pastikan gambar tidak keluar dari bingkai */
   margin: 20px auto; /* Atur margin bingkai */
